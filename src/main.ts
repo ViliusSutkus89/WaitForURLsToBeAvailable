@@ -20,16 +20,18 @@ async function run(): Promise<void> {
   }
 
   for (const URL of URLs) {
-    while (tries >= 1) {
+    let exists = false
+    while (!exists && tries >= 1) {
       try {
         info(`Checking if ${URL} exists.`)
         await axios.get(URL)
+        exists = true
       } catch (err) {
         if (--tries >= 1) {
           info(`Sleeping for ${timeout} seconds. ${tries} tries left.`)
           await sleep(timeout * 1000)
         } else {
-          setFailed('Retry limit exhausted!')
+          setFailed(`${URL} does not exist and retry limit exhausted!`)
         }
       }
     }
