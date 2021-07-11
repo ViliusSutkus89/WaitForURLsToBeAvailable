@@ -1,6 +1,6 @@
 {
   "name": "wait-for-urls-to-be-available",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": false,
   "description": "Pause a CI workflow until a set of URLs become available",
   "main": "lib/main.js",
