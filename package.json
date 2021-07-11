@@ -1,6 +1,6 @@
 {
   "name": "wait-for-urls-to-be-available",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "description": "",
   "main": "lib/main.js",
