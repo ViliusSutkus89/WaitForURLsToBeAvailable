@@ -1,5 +1,5 @@
 name: 'WaitForURLsToBeAvailable'
-description: ''
+description: 'Pause a CI workflow until a set of URLs become available'
 author: "Vilius Sutkus '89"
 inputs:
   URLs:
@@ -8,12 +8,12 @@ inputs:
 
   timeoutSeconds:
     required: false
-    description: 'How long to wait after a failed check before retrying'
+    description: 'How long to wait after a failed check before retrying?'
     default: '60'
 
   tryCount:
     required: false
-    description: 'How many times to try checking before assuming failure'
+    description: 'How many times to try checking before assuming failure?'
     default: '20'
 
 runs:

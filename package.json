@@ -2,7 +2,7 @@
   "name": "wait-for-urls-to-be-available",
   "version": "1.0.1",
   "private": false,
-  "description": "",
+  "description": "Pause a CI workflow until a set of URLs become available",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
