@@ -28,9 +28,18 @@ function sleep(timeoutMilliseconds) {
 }
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
-        const URLs = JSON.parse(core_1.getInput('URLs', { required: true }));
-        const timeout = parseInt(core_1.getInput('timeoutSeconds', { required: false }));
-        let tries = parseInt(core_1.getInput('tryCount', { required: false }));
+        let URLs;
+        let timeout;
+        let tries;
+        try {
+            URLs = JSON.parse(core_1.getInput('URLs', { required: true }));
+            timeout = parseInt(core_1.getInput('timeoutSeconds', { required: false }));
+            tries = parseInt(core_1.getInput('tryCount', { required: false }));
+        }
+        catch (err) {
+            core_1.setFailed(err);
+            return;
+        }
         for (const URL of URLs) {
             while (tries >= 1) {
                 try {

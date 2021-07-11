@@ -6,9 +6,18 @@ async function sleep(timeoutMilliseconds: number): Promise<void> {
 }
 
 async function run(): Promise<void> {
-  const URLs: string[] = JSON.parse(getInput('URLs', {required: true}))
-  const timeout = parseInt(getInput('timeoutSeconds', {required: false}))
-  let tries = parseInt(getInput('tryCount', {required: false}))
+  let URLs: string[]
+  let timeout: number
+  let tries: number
+
+  try {
+    URLs = JSON.parse(getInput('URLs', {required: true}))
+    timeout = parseInt(getInput('timeoutSeconds', {required: false}))
+    tries = parseInt(getInput('tryCount', {required: false}))
+  } catch (err) {
+    setFailed(err)
+    return
+  }
 
   for (const URL of URLs) {
     while (tries >= 1) {
