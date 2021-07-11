@@ -1,11 +1,21 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'WaitForURLsToBeAvailable'
+description: ''
+author: "Vilius Sutkus '89"
 inputs:
-  milliseconds: # change this
+  URLs:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'JSON encoded array of URLs to be checked'
+
+  timeoutSeconds:
+    required: false
+    description: 'How long to wait after a failed check before retrying'
+    default: '60'
+
+  tryCount:
+    required: false
+    description: 'How many times to try checking before assuming failure'
+    default: '20'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
