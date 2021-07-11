@@ -41,10 +41,12 @@ function run() {
             return;
         }
         for (const URL of URLs) {
-            while (tries >= 1) {
+            let exists = false;
+            while (!exists && tries >= 1) {
                 try {
                     core_1.info(`Checking if ${URL} exists.`);
                     yield axios_1.default.get(URL);
+                    exists = true;
                 }
                 catch (err) {
                     if (--tries >= 1) {
@@ -52,7 +54,7 @@ function run() {
                         yield sleep(timeout * 1000);
                     }
                     else {
-                        core_1.setFailed('Retry limit exhausted!');
+                        core_1.setFailed(`${URL} does not exist and retry limit exhausted!`);
                     }
                 }
             }
